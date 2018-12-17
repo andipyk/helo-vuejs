@@ -13,20 +13,66 @@
     </style>
 </head>
 <body>
+        <h1>Pratice Menu</h1>
 
         <div id="app">
-                <h1 v-bind:class="class_h1">{{ message }}</h1>
+                <div class="column">
+                    <ul>
+                        <menu-component v-for="menu in menus":menu="menu"/>
+                    </ul>
+                    
+                </div>
+
+        
         </div>
-    
+        
     <script>
-        Vue.config.silent = true;
-        var vm = new Vue({
-            el: '#app',
-            data: {
-                message : "Halo Indonesia",
-                class_h1 : "title"
+
+
+        // Menu Link 
+        const menus = [
+            {   
+                title : 'Learn Method',
+                url : 'LearnMethod.html'
             },
+            {   
+                title : 'Index Versi Old',
+                url : 'indexVersiold.html'
+            },
+        ]
+
+        Vue.component('menu-component', {
+            template: `
+                 <li><a v-bind:href="menu.url">{{menu.title}}</a></li>
+            `,
+            props:{
+                menu: Object
+            }
+        });
+        
+        new Vue({
+            el: '#app',
+            data:{
+                menus
+            }
         })
+        
+        
+        /**********************
+        * SEKIAN TERIMA GAJI *
+        *        HAHA        *
+        **********************/
+            
+
+        // var vm = new Vue({
+        //     el: '#app',
+        //     data: {
+        //         message : "Halo Indonesia",
+        //         class_h1 : "title"
+        //     },
+        // })
+
+
     </script>
 </body>
 </html>
